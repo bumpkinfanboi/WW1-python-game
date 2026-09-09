@@ -78,16 +78,27 @@ Type complete when finished.""")
 
     _selected_name = functions.query("What is your name?\n", None, True)
 
-    print("""Status Report: October, 1915
+    print("""Status Report to Lieutenant Colonel Geraldine: October XX, 1915
 
 The trenches are flooding again.
-The weather has been significantly colder since September, though still above freezing. Everyone can see winter coming from a mile off.
-How do they expect us to fight when half of us are about to freeze to death? Winter is coming and I refuse to believe we are prepared.
-Combine that with already depleted replacements and Winter of '16 will be a bloody one. Morale is low, and it's starting to become clear
-that the Christmas Truce really was a once-in-a-lifetime miracle. On the bright side, we won't be knee deep in mud much longer.
+
+Sick: 27
+Ammunition: 45 rnd / man
+Rations: ~4 days
+
+The weather has been significantly colder since September, though still above freezing. Everyone knows the winter of 15' is going to be brutal.
+They want us to repel the enemy under these conditions? We need to not only prepare for winter, but equip everyone with gas masks. For the time
+being we are holding our positions. I strongly urge for a transfer to the rear. Our sick grow in number, and the fighting force of our men is
+dwindling by the day.
+
+Requisitions:
+Ammunition - x4,000 Spitzer .303
+Rations - 2 weeks for 160 inftry
+Equipment - x200 Gas mask filters
+Transfer to rear for medical treatment
 
 Requesting cigarettes as always,
-REDACTED
+Captain [REDACTED] of [REDACTED] Company.
 
 PS: Here's a photograph of us standing in this mud, sorry about the quality.""")
     print("""@@%@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@%##@@@@@@@@@@#*@@@@@@@@@@@@@@@@%@@@@@@@@#@@@@@@@@@@@@@@@@@++@@@@@@@@@@@@@@@@*%@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
@@ -174,5 +185,5 @@ PS: Here's a photograph of us standing in this mud, sorry about the quality.""")
     outputList["stats"] = {"class" : _selectedClass}
     outputList["perks"] = _selectedPerks
     outputList["inventory"] = 'list3'
-    outputList["stats"]["name"] = _selected_name
+    outputList["stats"].name = _selected_name
     return outputList
