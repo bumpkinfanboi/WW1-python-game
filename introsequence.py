@@ -1,4 +1,5 @@
 import functions
+import math
 
 def start(): # return must be list, 1 = stats, 2 = perks, 3 = inventory
     outputList = {}
@@ -75,6 +76,14 @@ Type complete when finished.""")
     Medium
     Hard""")
     _selected_difficulty = functions.query("Select a difficulty.\n", ["easy", "medium", "hard"])
+    print("SELECTED DIFF "+_selected_difficulty)
+    _diff_health_mult = 1
+    if _selected_difficulty == "easy":
+        _diff_health_mult = 1.3
+    elif _selected_difficulty == "medium":
+        _diff_health_mult = 1
+    elif _selected_difficulty == "hard":
+        _diff_health_mult = 0.8
 
     _selected_name = functions.query("What is your name?\n", None, True)
 
@@ -185,5 +194,29 @@ PS: Here's a photograph of us standing in this mud, sorry about the quality.""")
     outputList["stats"] = {"class" : _selectedClass}
     outputList["perks"] = _selectedPerks
     outputList["inventory"] = 'list3'
-    outputList["stats"].name = _selected_name
+    outputList["stats"]["name"] = _selected_name
+    outputList["stats"]["health"] = {
+        "head" : math.ceil(35*_diff_health_mult),
+        "torso" : math.ceil(85*_diff_health_mult),
+        "stomach" : math.ceil(70*_diff_health_mult),
+        "arm_left" : math.ceil(60*_diff_health_mult),
+        "arm_right" : math.ceil(60*_diff_health_mult),
+        "leg_left" : math.ceil(65*_diff_health_mult),
+        "leg_right" : math.ceil(65*_diff_health_mult),
+    }
+    outputList["stats"]["needs"] = {
+        "food" : math.ceil(100*_diff_health_mult),
+        "water" : math.ceil(100*_diff_health_mult),
+        "morale" : math.ceil(100*_diff_health_mult),
+        "alcohol" : 0,
+        "nicotine" : 0,
+        "max_hunger" : math.ceil(100*_diff_health_mult),
+        "max_hydration" : math.ceil(100*_diff_health_mult),
+        "max_morale" : math.ceil(100*_diff_health_mult),
+        "blackout_alcohol" : math.ceil(80/-_diff_health_mult),
+    }
+    if "alcohol_addict" in _selectedPerks:
+        outputList["stats"]["needs"]["alcohol"] = True
+    if "alcohol_addict" in _selectedPerks:
+        outputList["stats"]["needs"]["nicotine"] = True
     return outputList
