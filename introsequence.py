@@ -14,7 +14,7 @@ Officer:
     High ranking commander. Has a whistle for rallying troops and a sabre.
 Spotter:
     Artillery fire director. Assigned a radio backpack and a handgun.""")
-    _selectedClass = functions.query("Select a class.\n", ["rifleman", "raider", "medic", "officer", "spotter"])
+    _selectedClass = functions.query("Select a class.\n", ["rifleman", "raider", "medic", "officer", "spotter", "dev"])
 
     print("""PERKS:
 Scav:
@@ -53,7 +53,13 @@ Type complete when finished.""")
     _picked_list = []
     while True:
         _dont_append = False
-        _selected = functions.query("Select 2 or more perks.\n", ["scav", "insomniac", "underage", "flat_footed", "immunocomprimised", "insititutionalized", "far_sighted", "pack_mule", "cigarette_addict", "alcohol_addict", "complete"])
+        _selected = functions.query("Select 2 or more perks.\n", ["scav", "insomniac", "underage", "flat_footed", "immunocomprimised", "insititutionalized", "far_sighted", "pack_mule", "cigarette_addict", "alcohol_addict", "complete", "dev"])
+        if _selected == "dev":
+            _selectedPerks.append("scav")
+            _selectedPerks.append("underage")
+            print("dev selected, these perks are used: ")
+            print(_selectedPerks)
+            break
         for i in _picked_list:
             if _selected in i:
                 _dont_append = True
@@ -204,6 +210,16 @@ PS: Here's a photograph of us standing in this mud, sorry about the quality.""")
         "leg_left" : math.ceil(65*_diff_health_mult),
         "leg_right" : math.ceil(65*_diff_health_mult),
     }
+    outputList["stats"]["health_max"] = {
+        "head" : math.ceil(35*_diff_health_mult),
+        "torso" : math.ceil(85*_diff_health_mult),
+        "stomach" : math.ceil(70*_diff_health_mult),
+        "arm_left" : math.ceil(60*_diff_health_mult),
+        "arm_right" : math.ceil(60*_diff_health_mult),
+        "leg_left" : math.ceil(65*_diff_health_mult),
+        "leg_right" : math.ceil(65*_diff_health_mult),
+        "total" : 440*_diff_health_mult,
+    }
     outputList["stats"]["needs"] = {
         "food" : math.ceil(100*_diff_health_mult),
         "water" : math.ceil(100*_diff_health_mult),
@@ -213,7 +229,7 @@ PS: Here's a photograph of us standing in this mud, sorry about the quality.""")
         "max_hunger" : math.ceil(100*_diff_health_mult),
         "max_hydration" : math.ceil(100*_diff_health_mult),
         "max_morale" : math.ceil(100*_diff_health_mult),
-        "blackout_alcohol" : math.ceil(80/-_diff_health_mult),
+        "blackout_alcohol" : math.ceil(80*_diff_health_mult),
     }
     if "alcohol_addict" in _selectedPerks:
         outputList["stats"]["needs"]["alcohol"] = True
