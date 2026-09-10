@@ -3,6 +3,7 @@ import functions
 import introsequence
 import os
 import keyboard
+import json
 
 difficulty = ""
 class player:
@@ -39,16 +40,12 @@ class player:
             print("OLD HEALTH = " + str(self.stats["health"][organ]))
             self.stats["health"][organ] -= amount
             print("NEW HEALTH = " + str(self.stats["health"][organ]))
+    #def manage_inventory(self, item, action, amount=None):
+
         
 user = player()
 user.intro()
-print(user.stats["class"])
-print(user.stats)
-print(user.perks)
-print(difficulty)
-print(user.stats["name"])
-user.getHPTotal()
-user.damage_organ("head", 10)
-user.damage_organ("head", -10)
-user.getHPTotal(True)
-print(user.stats["health"])
+enfield = functions.item("Enfield", 5, "weapon", {"damage": 1, "containerspace":5, "encumbrance_reduction":0,}, "primary", True, ["bullet"],)
+print(enfield.name)
+print(enfield.itemstats)
+print(enfield.weight)
