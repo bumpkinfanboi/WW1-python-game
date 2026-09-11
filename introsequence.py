@@ -199,7 +199,7 @@ PS: Here's a photograph of us standing in this mud, sorry about the quality.""")
     outputList["difficulty"] = _selected_difficulty
     outputList["stats"] = {"class" : _selectedClass}
     outputList["perks"] = _selectedPerks
-    outputList["inventory"] = 'list3'
+    outputList["inventory"] = {""}
     outputList["stats"]["name"] = _selected_name
     outputList["stats"]["health"] = {
         "head" : math.ceil(35*_diff_health_mult),
