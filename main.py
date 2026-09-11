@@ -45,7 +45,3 @@ class player:
         
 user = player()
 user.intro()
-enfield = functions.item("Enfield", 5, "weapon", {"damage": 1, "containerspace":5, "encumbrance_reduction":0,}, "primary", True, ["bullet"],)
-print(enfield.name)
-print(enfield.itemstats)
-print(enfield.weight)

@@ -24,7 +24,7 @@ def query(toask, acceptableinputs=None, charonly=False, numonly=False):
     return queryanswr
 
 class item:
-    def __init__(self, name, weight, type, itemstats, equip_slot=None, is_container=False, container_allowed_items=None):
+    def __init__(self, name, weight, type, itemstats, equip_slot=None, container=False, container_allowed_items=None):
         self.name = name
         self.weight = weight # IMPORTANT NOTE: WEIGHT IS IN KILOGRAMS! 0.2 = 200 grams! 1 = 1 kilogram!
         self.type = type
@@ -34,7 +34,7 @@ class item:
             self.equip_slot = equip_slot
         else:
             self.equip_slot = None
-        if is_container == True:
+        if container == True:
             self.container_space = itemstats["containerspace"]
             self.encumbrance_reduction = itemstats["encumbrance_reduction"]
         else:
@@ -47,7 +47,7 @@ class item:
             if isinstance(self.itemstats[itemstat], int):
                 if self.itemstats[itemstat] < amount:
                     self.itemstats[itemstat] = 0
-                    self.item_empty() # ADD THIS TO MAKE A NEW ITEM IF THIS ITEM IS USED COMPLETELY
+                    self.item_empty() # TODO: ADD THIS TO MAKE A NEW ITEM IF THIS ITEM IS USED COMPLETELY
                 elif -self.itemstats[self.itemstats] > amount:
                         self.itemstats[itemstat] = self.max_item_stats[itemstat]
                 else:

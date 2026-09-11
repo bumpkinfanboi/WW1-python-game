@@ -1,0 +1,26 @@
+{
+   "enfieldmk3": {
+      "name": "Lee Enfield Mk. III",
+      "weight": 5,
+      "type": "weapon",
+      "itemstats": {
+         "range": 500,
+         "containerspace": 5,
+         "encumbrance_reduction": 0
+      },
+      "equip_slot": "primary",
+      "container": true,
+      "allowed_items": [
+         "303spitzer"
+      ]
+   },
+   "303spitzer": {
+      "name": ".303 Spitzer",
+      "weight": 0.025,
+      "type": "ammunition",
+      "itemstats": {
+         "caliber": ".303",
+         "bullet_shape": "spitzer"
+      }
+   }
+}
