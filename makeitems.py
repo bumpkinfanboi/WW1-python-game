@@ -6,7 +6,7 @@ item_info = {
         "name" : "Lee Enfield Mk. III",
         "weight" : 5,
         "type" : "weapon",
-        "itemstats" : {"range" : 500, "containerspace":5, "encumbrance_reduction":0,},
+        "itemstats" : {"range" : 500, "containerspace":5, "encumbrance_reduction":0,}, # range is measured in meters
         "equip_slot" : "primary", # TODO: make equipment slots in player inventory, have them reduce the weight of an item if equipped (like Project Zomboid)
         "container" : True,
         "allowed_items" : ["303spitzer"],
